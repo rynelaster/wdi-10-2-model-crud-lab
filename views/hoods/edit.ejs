@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Hood</title>
+</head>
+<body>
+
+	<h1>Edit hood</h1>
+
+	<form action="/hoods/<%= hood.id %>?_method=PUT" method="POST">
+		Name:<input type="text" name="name" value="<%= hood.name %>">
+		<button type="submit">Submit Edits</button>
+	</form>
+
+</body>
+</html>

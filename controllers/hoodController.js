@@ -55,6 +55,28 @@ router.route("/:id")
 			}
 		})
 	})
+	.put((req, res) => {
+		Hood.findByIdAndUpdate(req.params.id, req.body, (err, updatedHood) => {
+			if (err) {
+				console.log(err)
+			} else {
+				res.redirect("/hoods")
+			}
+		})
+	})
+
+	router.route("/:id/edit")
+		.get((req, res) => {
+			Hood.findById(req.params.id, (err, foundHood) => {
+				if (err) {
+					console.log(err)
+				} else {
+					res.render("hoods/edit.ejs", {
+						hood: foundHood
+					})
+				}
+			})
+		})
 
 
 module.exports = router;
