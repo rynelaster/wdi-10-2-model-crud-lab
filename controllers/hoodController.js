@@ -46,6 +46,15 @@ router.route("/:id")
 			}
 		})	
 	})
+	.delete((req, res) => {
+		Hood.findByIdAndRemove(req.params.id, (err, deletedHood) => {
+			if (err) {
+				console.log(err)
+			} else {
+				res.redirect("/hoods")
+			}
+		})
+	})
 
 
 module.exports = router;
