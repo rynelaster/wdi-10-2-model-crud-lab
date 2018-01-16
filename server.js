@@ -2,7 +2,14 @@ const express = require('express');
 
 const app = express();
 
+const housesController = require('./controllers/houseController.js');
+app.use('/houses', housesController);
 
+
+// Index Router
+app.get('/', (req, res)=>{
+	res.send('homepage')
+})
 
 
 
