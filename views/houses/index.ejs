@@ -7,6 +7,15 @@
 
 	<h1>List of Houses</h1>
 	
+	<ul>
+		
+		<% for (let i = 0; i < houses.length; i++) { -%>
+			<li>
+				<a href="houses/<%= houses[i].id %>"><%= houses[i].address%></a>
+			</li>
+		<% } -%>
+
+	</ul>
 
 </body>
 </html>

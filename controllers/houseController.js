@@ -5,7 +5,17 @@ const router = express.Router();
 const House = require('../models/house.js')
 
 router.get('/', (req, res)=>{
-	res.render('houses/index.ejs')
+	House.find({}, (err, foundHouses)=>{
+		if(err){
+			console.log(err)
+		}
+		else{
+			res.render('houses/index.ejs', {
+				houses: foundHouses
+			})
+		}
+	})
+
 })
 
 router.get('/new', (req, res)=>{
