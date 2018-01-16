@@ -2,7 +2,12 @@ const express = require('express');
 
 const app = express();
 
-require('./db/db.js')
+const bodyParser = require('body-parser');
+
+require('./db/db.js');
+
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 const housesController = require('./controllers/houseController.js');
 app.use('/houses', housesController);
