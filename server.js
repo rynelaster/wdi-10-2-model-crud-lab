@@ -4,10 +4,17 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
+const methodOverride = require('method-override');
+
+
+
 require('./db/db.js');
 
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride('_method'))
+
+
 
 const housesController = require('./controllers/houseController.js');
 app.use('/houses', housesController);

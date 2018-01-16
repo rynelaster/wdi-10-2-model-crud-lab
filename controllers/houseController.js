@@ -52,7 +52,15 @@ router.get('/:id', (req, res)=> {
 	})
 })
 
-
+router.delete('/:id', (req, res)=>{
+	House.findByIdAndRemove(req.params.id, (err, deleteHouse)=>{
+		if (err) {
+			console.log(err)
+		}else{
+			res.redirect('/houses')
+		}
+	})
+})
 
 
 

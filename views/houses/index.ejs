@@ -5,6 +5,10 @@
 </head>
 <body>
 
+	<header>
+		<a href="houses/new">Create New House</a>
+	</header>
+
 	<h1>List of Houses</h1>
 	
 	<ul>
@@ -13,6 +17,13 @@
 			<li>
 				<a href="houses/<%= houses[i].id %>"><%= houses[i].address%></a>
 			</li>
+			
+			<form action="/houses/<%=houses[i].id%>/?_method=DELETE" method="POST">
+
+			<button>Delete House</button>
+
+			</form>
+
 		<% } -%>
 
 	</ul>
