@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create a New House</title>
+</head>
+<body>
+
+	<h1>Create a New House</h1>
+
+	<form action="/houses/<%=house.id%>?_method=PUT" method="POST">
+		Address:<input type="text" name="address" value="<%=house.address%>">
+		<button type="submit">Submit New House</button>
+	</form>
+
+</body>
+</html>

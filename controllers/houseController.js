@@ -39,6 +39,16 @@ router.post('/', (req, res)=>{
 })
 
 
+router.get('/:id/edit', (req, res)=>{
+	House.findById(req.params.id, (err, foundHouse)=>{
+		if (err) {
+			console.log(err)
+		}else{
+			res.render('houses/edit.ejs', {house: foundHouse})
+		}
+	})
+})
+
 router.get('/:id', (req, res)=> {
 	House.findById(req.params.id, (err, foundHouse)=>{
 		if (err) {
@@ -63,7 +73,15 @@ router.delete('/:id', (req, res)=>{
 })
 
 
-
+router.put('/:id', (req, res)=>{
+	House.findByIdAndUpdate(req.params.id, req.body, (err, updatedHouse)=>{
+		if (err) {
+			console.log(err)
+		}else{
+			res.redirect('/houses')
+		}
+	})
+})
 
 
 
