@@ -18,6 +18,8 @@ app.use(methodOverride('_method'))
 
 const housesController = require('./controllers/houseController.js');
 app.use('/houses', housesController);
+const hoodsController = require('./controllers/hoodController.js');
+app.use('/hoods', hoodsController);
 
 
 // Index Router
