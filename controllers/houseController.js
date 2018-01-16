@@ -4,6 +4,8 @@ const router = express.Router();
 
 const House = require('../models/house.js')
 
+
+// INDEX ROUTE
 router.get('/', (req, res)=>{
 	House.find({}, (err, foundHouses)=>{
 		if(err){
@@ -22,6 +24,8 @@ router.get('/new', (req, res)=>{
 	res.render('houses/new.ejs')
 })
 
+
+// POST NEW ROUTE
 router.post('/', (req, res)=>{
 	House.create(req.body, (err, houseCreated)=>{
 		if(err){
@@ -35,6 +39,18 @@ router.post('/', (req, res)=>{
 })
 
 
+router.get('/:id', (req, res)=> {
+	House.findById(req.params.id, (err, foundHouse)=>{
+		if (err) {
+			console.log(err)
+		} else{
+			console.log(foundHouse)
+			res.render('houses/show.ejs', {
+				house: foundHouse
+			})
+		}
+	})
+})
 
 
 
