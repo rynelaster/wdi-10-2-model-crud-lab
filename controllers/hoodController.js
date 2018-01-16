@@ -5,14 +5,33 @@ const Hood = require("../models/hood.js")
 
 
 // Index Route
-router.get("/", (req, res) => {
-	// res.render("hoods/index.ejs")
-	res.send("Hoods index route")
-})
+router.route("/")
+	.get((req, res) => {
+		Hood.find({}, (err, foundHoods) => {
+			if (err) {
+				console.log(err)
+			} else {
+				res.render("hoods/index.ejs", {
+					hoods: foundHoods
+				})		
+			}
+		})
+	})
+	.post((req, res) => {
+		Hood.create(req.body, (err, hoodCreated) => {
+			if (err) {
+				console.log(err)
+			} else {
+				console.log(hoodCreated)
+				res.redirect("/hoods")
+			}
+		})
+	})
 
-router.get("/new", (req, res) => {
-	res.render("hoods/new.ejs")
-})
+router.route("/new")
+	.get((req, res) => {
+		res.render("hoods/new.ejs")
+	})
 
 
 
