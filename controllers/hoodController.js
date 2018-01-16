@@ -33,7 +33,19 @@ router.route("/new")
 		res.render("hoods/new.ejs")
 	})
 
-
+router.route("/:id")
+	.get((req, res) => {
+		Hood.findById(req.params.id, (err, foundHood) => {
+			if (err) {
+				console.log(err)
+			} else {
+				console.log(foundHood);
+				res.render("hoods/show.ejs", {
+					hood: foundHood
+				})
+			}
+		})	
+	})
 
 
 module.exports = router;
